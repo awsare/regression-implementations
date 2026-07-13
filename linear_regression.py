@@ -4,8 +4,6 @@ import numpy as np
 
 def compute_Phi(x,p):
     '''
-        Compute the feature matrix Phi of x. We will construct p polynomials, the p features of the data samples. 
-        The features of each sample, is x^0, x^1, x^2 ... x^(p-1)
         Input:
             x : a vector of samples in one dimensional space, a numpy vector of shape (n,).
                 Here n is the number of samples.
@@ -25,14 +23,11 @@ def compute_Phi(x,p):
 
 def compute_yhat(Phi, w):
     '''
-        Compute the linear logit value (predicted value) of all data instances. z = <w, x>
-        Here <w, x> represents the dot product of the two vectors.
         Input:
             Phi: the feature matrix of all data instance, a float numpy array of shape (n,p). 
             w: the weights parameter of the linear model, a float numpy array of shape (p,). 
         Output:
             yhat: the logit value (predicted value) of all instances, a float numpy array of shape (n,)
-        Hint: you could solve this problem using 1 line of code. Though using more lines of code is also okay.
     '''
 
 
@@ -43,7 +38,6 @@ def compute_yhat(Phi, w):
 
 def compute_L(yhat,y):
     '''
-        Compute the loss function: mean squared error. In this function, divide the original mean squared error by 2 for making gradient computation simple. Remember our loss function in the slides.  
         Input:
             yhat: the predicted sample labels, a numpy vector of shape (n,).
             y:  the sample labels, a numpy vector of shape (n,).
@@ -61,7 +55,6 @@ def compute_L(yhat,y):
 
 def compute_dL_dw(y, yhat, Phi):
     '''
-        Compute the gradients of the loss function L with respect to (w.r.t.) the weights w. 
         Input:
             Phi: the feature matrix of all data instances, a float numpy array of shape (n,p). 
                Here p is the number of features/dimensions.
@@ -80,14 +73,12 @@ def compute_dL_dw(y, yhat, Phi):
 
 def update_w(w, dL_dw, alpha = 0.001):
     '''
-       Given the instances in the training data, update the weights w using gradient descent.
         Input:
             w: the current value of the weight vector, a numpy float array of shape (p,).
             dL_dw: the gradient of the loss function w.r.t. the weight vector, a numpy float array of shape (p,). 
             alpha: the step-size parameter of gradient descent, a float scalar.
         Output:
             w: the updated weight vector, a numpy float array of shape (p,).
-        Hint: you could solve this problem using 1 line of code
     '''
 
     w = w - (alpha * dL_dw) # steps weights by a factor of alpha in opposite direction of gradient
@@ -97,8 +88,6 @@ def update_w(w, dL_dw, alpha = 0.001):
 
 def train(X, Y, alpha=0.001, n_epoch=100):
     '''
-       Given a training dataset, train the linear regression model by iteratively updating the weights w using the gradient descent
-        We repeat n_epoch passes over all the training instances.
         Input:
             X: the feature matrix of training instances, a float numpy array of shape (n, p). Here n is the number of data instance in the training set, p is the number of features/dimensions.
             Y: the labels of training instance, a numpy integer array of shape (n,). 
